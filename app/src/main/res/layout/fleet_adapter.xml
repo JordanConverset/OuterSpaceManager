@@ -19,7 +19,7 @@
             android:layout_margin="5dp"
             android:textColor="@color/colorPrimary" />
         <TextView
-            android:id="@+id/level"
+            android:id="@+id/amountAvailable"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -31,10 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="Buy"
+            android:text="Add"
             android:background="@color/GreenLight"
             android:textColor="@color/Dark"
-            android:id="@+id/buy"/>
+            android:id="@+id/add"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

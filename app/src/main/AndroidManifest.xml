@@ -44,6 +44,16 @@
             android:name=".Fleet.ShipActivity"
             android:label="@string/app_name" >
         </activity>
+
+        <activity
+            android:name=".Attack.AttackActivity"
+            android:label="@string/app_name" >
+        </activity>
+
+        <activity
+            android:name=".Attack.FleetActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

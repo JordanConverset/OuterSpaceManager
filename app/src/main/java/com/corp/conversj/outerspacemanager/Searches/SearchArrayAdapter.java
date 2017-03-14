@@ -93,11 +93,11 @@ public class SearchArrayAdapter extends RecyclerView.Adapter<SearchArrayAdapter.
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 Service service = retrofit.create(Service.class);
-                Call<Buildings> request = service.createBuilding(settings.getString("users", new String()), String.valueOf(id));
+                Call<Searches> request = service.createSearch(settings.getString("users", new String()), String.valueOf(id));
 
-                request.enqueue(new Callback<Buildings>() {
+                request.enqueue(new Callback<Searches>() {
                     @Override
-                    public void onResponse(Call<Buildings> call, Response<Buildings> response) {
+                    public void onResponse(Call<Searches> call, Response<Searches> response) {
                         if(response.code() == 200) {
                             CharSequence text = "En cours de construction";
                             int duration = Toast.LENGTH_SHORT;
@@ -112,7 +112,7 @@ public class SearchArrayAdapter extends RecyclerView.Adapter<SearchArrayAdapter.
                     }
 
                     @Override
-                    public void onFailure(Call<Buildings> call, Throwable t) {
+                    public void onFailure(Call<Searches> call, Throwable t) {
                         CharSequence text = "Error";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);

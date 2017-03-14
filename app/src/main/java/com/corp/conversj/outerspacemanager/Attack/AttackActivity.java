@@ -1,4 +1,4 @@
-package com.corp.conversj.outerspacemanager.Fleet;
+package com.corp.conversj.outerspacemanager.Attack;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.corp.conversj.outerspacemanager.Fleet.Ship;
+import com.corp.conversj.outerspacemanager.Fleet.Ships;
+import com.corp.conversj.outerspacemanager.Galaxy.GalaxyArrayAdapter;
+import com.corp.conversj.outerspacemanager.Galaxy.Users;
 import com.corp.conversj.outerspacemanager.R;
 import com.corp.conversj.outerspacemanager.Service;
+import com.google.gson.Gson;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,45 +27,42 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by mac15 on 13/03/2017.
+ * Created by mac15 on 14/03/2017.
  */
 
-public class ShipActivity extends Activity{
-    private RecyclerView rvShips;
-    private TextView tvGas;
-    private TextView tvMinerals;
+public class AttackActivity extends Activity{
+    private RecyclerView rvUsers;
     private Retrofit retrofit;
     public static final String PREFS_NAME = "OuterSpaceManager";
     private SharedPreferences settings;
+    private Gson gson;
+    private Ships fleet;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Gson gson = new Gson();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ship);
+        setContentView(R.layout.activity_attack);
         settings = getSharedPreferences(PREFS_NAME, 0);
-        rvShips = (RecyclerView) findViewById(R.id.ships);
-        rvShips.setLayoutManager(new LinearLayoutManager(this));
-        tvGas = (TextView) findViewById(R.id.gas);
-        tvMinerals = (TextView) findViewById(R.id.minerals);
+        rvUsers = (RecyclerView) findViewById(R.id.users);
+        rvUsers.setLayoutManager(new LinearLayoutManager(this));
         Intent intent = getIntent();
-
-        tvGas.setText(String.valueOf((int)intent.getDoubleExtra("gas",0)));
-        tvMinerals.setText(String.valueOf((int)intent.getDoubleExtra("minerals",0)));
+        fleet = gson.fromJson(intent.getStringExtra("fleet"), Ships.class);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://outer-space-manager.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Service service = retrofit.create(Service.class);
-        Call<Ships> request = service.getShips(settings.getString("users", new String()));
-        request.enqueue(new Callback<Ships>() {
+        Call<Users> request = service.getUsers(settings.getString("users", new String()));
+        request.enqueue(new Callback<Users>() {
             @Override
-            public void onResponse(Call<Ships> call, Response<Ships> response) {
-                rvShips.setAdapter(new ShipArrayAdapter(getApplicationContext(), response.body().getShips()));
+            public void onResponse(Call<Users> call, Response<Users> response) {
+                rvUsers.setAdapter(new AttackArrayAdapter(AttackActivity.this, response.body().getUsers(), fleet, settings.getString("users", new String())));
             }
 
             @Override
-            public void onFailure(Call<Ships> call, Throwable t) {
+            public void onFailure(Call<Users> call, Throwable t) {
                 Context context = getApplicationContext();
                 CharSequence text = "Error";
                 int duration = Toast.LENGTH_SHORT;

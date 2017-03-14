@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.corp.conversj.outerspacemanager.Attack.AttackActivity;
+import com.corp.conversj.outerspacemanager.Attack.FleetActivity;
 import com.corp.conversj.outerspacemanager.Buildings.BuildingActivity;
 import com.corp.conversj.outerspacemanager.Connexion.SignInActivity;
 import com.corp.conversj.outerspacemanager.Fleet.ShipActivity;
@@ -105,6 +107,14 @@ public class MainActivity extends Activity {
                 myIntent = new Intent(getApplicationContext(),ShipActivity.class);
                 myIntent.putExtra("gas", gas);
                 myIntent.putExtra("minerals", minerals);
+                startActivity(myIntent);
+            }
+        });
+
+        btnFlotte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myIntent = new Intent(getApplicationContext(), FleetActivity.class);
                 startActivity(myIntent);
             }
         });

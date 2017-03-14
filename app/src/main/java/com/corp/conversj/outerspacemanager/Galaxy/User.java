@@ -12,7 +12,7 @@ public class User {
     private Double gasModifier;
     private Double minerals;
     private Double mineralsModifier;
-    private int points;
+    private Double points;
 
     public User(String username, String password){
         this.username = username;
@@ -31,7 +31,7 @@ public class User {
         return this.username;
     }
 
-    public int getPoints(){
+    public Double getPoints(){
         return this.points;
     }
 

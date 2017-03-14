@@ -7,6 +7,8 @@ import com.corp.conversj.outerspacemanager.Galaxy.User;
 import com.corp.conversj.outerspacemanager.Galaxy.Users;
 import com.corp.conversj.outerspacemanager.Searches.Searches;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -37,6 +39,10 @@ public interface Service {
     Call<Searches> createSearch(@Header("x-access-token") String token, @Path("id") String searchesId);
     @GET("api/v1/ships")
     Call<Ships> getShips(@Header("x-access-token") String token);
+    @GET("api/v1/fleet/list")
+    Call<Ships> getFleet(@Header("x-access-token") String token);
     @POST("api/v1/ships/create/{id}")
     Call<Ships> createShip(@Header("x-access-token") String token, @Path("id") String shipId, @Body Ship ship);
+    @POST("api/v1/fleet/attack/{username}")
+    Call<Ships> attack(@Header("x-access-token") String token, @Path("username") String username, @Body Ships ships);
 }

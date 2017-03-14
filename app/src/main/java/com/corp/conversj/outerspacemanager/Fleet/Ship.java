@@ -17,9 +17,15 @@ public class Ship {
     private String name;
     private int timeToBuild;
     private int amount;
+    private int capacity;
 
     public Ship(int amount){
         this.amount = amount;
+    }
+
+    public Ship(int amount, int shipId){
+        this.amount = amount;
+        this.shipId = shipId;
     }
 
     public int getShipId() {
@@ -64,6 +70,14 @@ public class Ship {
 
     public int getTimeToBuild() {
         return timeToBuild;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }
 
