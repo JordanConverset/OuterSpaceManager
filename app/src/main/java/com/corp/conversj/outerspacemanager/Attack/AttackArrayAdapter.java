@@ -2,7 +2,6 @@ package com.corp.conversj.outerspacemanager.Attack;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.corp.conversj.outerspacemanager.AttackResponse;
+import com.corp.conversj.outerspacemanager.Model.AttackResponse;
 import com.corp.conversj.outerspacemanager.DB.Attack;
 import com.corp.conversj.outerspacemanager.DB.AttackDataSource;
-import com.corp.conversj.outerspacemanager.Fleet.Ship;
-import com.corp.conversj.outerspacemanager.Fleet.Ships;
-import com.corp.conversj.outerspacemanager.Galaxy.GalaxyArrayAdapter;
-import com.corp.conversj.outerspacemanager.Galaxy.User;
-import com.corp.conversj.outerspacemanager.Galaxy.Users;
+import com.corp.conversj.outerspacemanager.Model.Ships;
+import com.corp.conversj.outerspacemanager.Model.User;
 import com.corp.conversj.outerspacemanager.MainActivity;
 import com.corp.conversj.outerspacemanager.R;
-import com.corp.conversj.outerspacemanager.Searches.SearchArrayAdapter;
-import com.corp.conversj.outerspacemanager.Searches.Searches;
 import com.corp.conversj.outerspacemanager.Service;
 
 import java.util.List;

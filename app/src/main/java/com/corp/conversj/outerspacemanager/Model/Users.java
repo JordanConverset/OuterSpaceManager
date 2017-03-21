@@ -1,6 +1,7 @@
-package com.corp.conversj.outerspacemanager.Galaxy;
+package com.corp.conversj.outerspacemanager.Model;
 
-import java.util.ArrayList;
+import com.corp.conversj.outerspacemanager.Model.User;
+
 import java.util.List;
 
 /**

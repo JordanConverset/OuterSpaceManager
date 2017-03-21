@@ -10,23 +10,30 @@ import android.os.Environment;
  */
 
 public class OuterSpaceManagerDB extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "OuterSpaceManager.db";
     public static final String ATTACK_TABLE_NAME = "Attack";
+    public static final String SHIP_TABLE_NAME = "Ship";
     public static final String KEY_ID = "id";
     public static final String KEY_SHIPS = "ships";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_ATTACKTIME = "attackTime";
     public static final String KEY_BEGINATTACKTIME = "beginAttackTime";
-    private static final String ATTACK_TABLE_CREATE = "CREATE TABLE " + ATTACK_TABLE_NAME + " (" + KEY_ID + " TEXT, " +
-            KEY_SHIPS + " TEXT, " + KEY_USERNAME + " TEXT, " + KEY_ATTACKTIME + " REAL, " + KEY_BEGINATTACKTIME + " REAL);";
+    public static final String KEY_SHIP_ID = "id";
+    public static final String KEY_SHIP_NAME = "name";
+    private static final String SHIP_TABLE_CREATE = "CREATE TABLE " + SHIP_TABLE_NAME + " (" + KEY_SHIP_ID + " INTEGER, " + KEY_SHIP_NAME + " TEXT " + ");";
+    private static final String ATTACK_TABLE_CREATE = "CREATE TABLE " + ATTACK_TABLE_NAME + " (" + KEY_ID + " TEXT, " + KEY_SHIPS + " TEXT, " + KEY_USERNAME + " TEXT, " + KEY_ATTACKTIME + " REAL, " + KEY_BEGINATTACKTIME + " REAL);";
     public OuterSpaceManagerDB(Context context) {
         super(context, Environment.getExternalStorageDirectory()+"/"+DATABASE_NAME, null, DATABASE_VERSION); }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(ATTACK_TABLE_CREATE); }
+        db.execSQL(ATTACK_TABLE_CREATE);
+        db.execSQL(SHIP_TABLE_CREATE);
+    }
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {db.execSQL("DROP TABLE IF EXISTS " + ATTACK_TABLE_NAME);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + ATTACK_TABLE_NAME);
-        onCreate(db); }
+        db.execSQL("DROP TABLE IF EXISTS " + SHIP_TABLE_NAME);
+        onCreate(db);
+    }
 }

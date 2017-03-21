@@ -1,4 +1,4 @@
-package com.corp.conversj.outerspacemanager;
+package com.corp.conversj.outerspacemanager.Model;
 
 /**
  * Created by mac15 on 20/03/2017.

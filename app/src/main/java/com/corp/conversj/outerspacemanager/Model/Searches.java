@@ -1,4 +1,6 @@
-package com.corp.conversj.outerspacemanager.Searches;
+package com.corp.conversj.outerspacemanager.Model;
+
+import com.corp.conversj.outerspacemanager.Model.Search;
 
 import java.util.ArrayList;
 

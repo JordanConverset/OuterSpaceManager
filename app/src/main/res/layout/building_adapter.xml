@@ -1,159 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="275dp"
     style="@style/CustomButton">
 
+    <ImageView
+        android:contentDescription="Image of Building"
+        android:id="@+id/building_image"
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:layout_margin="5dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="275dp"
+        android:layout_margin="5dp"
+        android:background="@color/Dark"
+        android:alpha="0.4"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="0dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:textSize="15dp"
-            android:layout_margin="5dp"
-            android:textColor="@color/colorPrimary" />
-        <TextView
-            android:id="@+id/level"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
-            android:textSize="30dp"
-            android:layout_margin="5dp"
-            android:textColor="@color/Orange" />
-        <Button
-            android:layout_width="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="15sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/colorPrimary" />
+            <TextView
+                android:id="@+id/level"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/Orange" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Buy"
+                android:background="@color/GreenLight"
+                android:textColor="@color/Dark"
+                android:id="@+id/buy"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="Buy"
-            android:background="@color/GreenLight"
-            android:textColor="@color/Dark"
-            android:id="@+id/buy"/>
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:padding="5dp"
+                android:text="Effect :"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="5dp"
+                android:textColor="@color/White"
+                android:id="@+id/effect"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:padding="5dp"
+                android:text="Amount effect :"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="5dp"
+                android:textColor="@color/White"
+                android:id="@+id/amountEffect"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:padding="5dp"
+                android:text="Mineral cost :"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="5dp"
+                android:textColor="@color/White"
+                android:id="@+id/mineralCost"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:padding="5dp"
+                android:text="Gas cost :"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="5dp"
+                android:textColor="@color/White"
+                android:id="@+id/gasCost"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:padding="5dp"
+                android:text="Time to build :"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="5dp"
+                android:textColor="@color/White"
+                android:id="@+id/timeToBuild"/>
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:padding="5dp"
-            android:text="Effect :"
-            android:textColor="@color/White" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center_vertical"
-            android:padding="5dp"
-            android:textColor="@color/White"
-            android:id="@+id/effect"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:padding="5dp"
-            android:text="Amount effect :"
-            android:textColor="@color/White" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center_vertical"
-            android:padding="5dp"
-            android:textColor="@color/White"
-            android:id="@+id/amountEffect"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:padding="5dp"
-            android:text="Mineral cost :"
-            android:textColor="@color/White" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center_vertical"
-            android:padding="5dp"
-            android:textColor="@color/White"
-            android:id="@+id/mineralCost"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:padding="5dp"
-            android:text="Gas cost :"
-            android:textColor="@color/White" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center_vertical"
-            android:padding="5dp"
-            android:textColor="@color/White"
-            android:id="@+id/gasCost"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:padding="5dp"
-            android:text="Time to build :"
-            android:textColor="@color/White" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="left|center_vertical"
-            android:padding="5dp"
-            android:textColor="@color/White"
-            android:id="@+id/timeToBuild"/>
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -7,16 +7,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.corp.conversj.outerspacemanager.Model.Building;
+import com.corp.conversj.outerspacemanager.Model.Buildings;
 import com.corp.conversj.outerspacemanager.R;
 import com.corp.conversj.outerspacemanager.Service;
-import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -60,29 +61,37 @@ public class BuildingArrayAdapter extends RecyclerView.Adapter<BuildingArrayAdap
         }
         int level = aBuilding.getLevel();
         if(level == 0) {
-            holder.tvGasCost.setText(aBuilding.getGasCostLevel0());
+            holder.tvGasCost.setText(String.valueOf(aBuilding.getGasCostLevel0()));
         } else {
             holder.tvGasCost.setText(String.valueOf(aBuilding.getGasCostLevel0()+aBuilding.getGasCostByLevel()*level));
         }
         if(level == 0) {
-            holder.tvMineralCost.setText(aBuilding.getMineralCostLevel0());
+            holder.tvMineralCost.setText(String.valueOf(aBuilding.getMineralCostLevel0()));
         } else {
             holder.tvMineralCost.setText(String.valueOf(aBuilding.getMineralCostLevel0()+aBuilding.getMineralCostByLevel()*level));
         }
         if(level == 0) {
-            holder.tvTimeToBuild.setText(aBuilding.getTimeToBuildLevel0());
+            holder.tvTimeToBuild.setText(String.valueOf(aBuilding.getTimeToBuildLevel0()));
         } else {
             holder.tvTimeToBuild.setText(String.valueOf(aBuilding.getTimeToBuildLevel0()+aBuilding.getTimeToBuildByLevel()*level));
         }
         if(level == 0) {
-            holder.tvAmountEffect.setText(aBuilding.getAmountOfEffectLevel0());
+            holder.tvAmountEffect.setText(String.valueOf(aBuilding.getAmountOfEffectLevel0()));
         } else {
-            holder.tvAmountEffect.setText(String.valueOf(aBuilding.getAmountOfEffectLevel0()+aBuilding.getAmoutOfEffectByLevel()*level));
+            holder.tvAmountEffect.setText(String.valueOf(aBuilding.getAmountOfEffectLevel0()+aBuilding.getAmountOfEffectByLevel()*level));
         }
         if(aBuilding.getBuilding()) {
             holder.itemView.setBackgroundColor(Color.GRAY);
         }
         holder.tvLevel.setText(String.valueOf(level));
+
+        Glide
+                .with(context)
+                .load(aBuilding.getImageUrl())
+                .centerCrop()
+                .crossFade()
+                .into(holder.imBuilding);
+
 
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +146,7 @@ public class BuildingArrayAdapter extends RecyclerView.Adapter<BuildingArrayAdap
         private TextView tvMineralCost;
         private TextView tvTimeToBuild;
         private TextView tvLevel;
+        private ImageView imBuilding;
 
         public BuildingViewHolder(View itemView) {
             super(itemView);
@@ -148,6 +158,7 @@ public class BuildingArrayAdapter extends RecyclerView.Adapter<BuildingArrayAdap
             tvMineralCost = (TextView) itemView.findViewById(R.id.mineralCost);
             tvTimeToBuild = (TextView) itemView.findViewById(R.id.timeToBuild);
             tvLevel = (TextView) itemView.findViewById(R.id.level);
+            imBuilding = (ImageView) itemView.findViewById(R.id.building_image);
         }
     }
 }

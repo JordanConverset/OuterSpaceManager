@@ -11,13 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.corp.conversj.outerspacemanager.Attack.AttackActivity;
 import com.corp.conversj.outerspacemanager.Attack.FleetActivity;
 import com.corp.conversj.outerspacemanager.Buildings.BuildingActivity;
 import com.corp.conversj.outerspacemanager.Connexion.SignInActivity;
 import com.corp.conversj.outerspacemanager.Fleet.ShipActivity;
 import com.corp.conversj.outerspacemanager.Galaxy.GalaxyActivity;
-import com.corp.conversj.outerspacemanager.Galaxy.User;
+import com.corp.conversj.outerspacemanager.Model.User;
 import com.corp.conversj.outerspacemanager.GeneralView.GeneralActivity;
 import com.corp.conversj.outerspacemanager.Searches.SearchActivity;
 

@@ -1,4 +1,4 @@
-package com.corp.conversj.outerspacemanager.Galaxy;
+package com.corp.conversj.outerspacemanager.Model;
 
 /**
  * Created by conversj on 06/03/2017.

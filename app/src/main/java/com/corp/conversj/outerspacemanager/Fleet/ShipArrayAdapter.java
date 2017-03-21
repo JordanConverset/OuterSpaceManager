@@ -2,25 +2,22 @@ package com.corp.conversj.outerspacemanager.Fleet;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.corp.conversj.outerspacemanager.Attack.FleetArrayAdapter;
+import com.corp.conversj.outerspacemanager.Model.Ship;
+import com.corp.conversj.outerspacemanager.Model.Ships;
 import com.corp.conversj.outerspacemanager.R;
 import com.corp.conversj.outerspacemanager.Service;
-import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

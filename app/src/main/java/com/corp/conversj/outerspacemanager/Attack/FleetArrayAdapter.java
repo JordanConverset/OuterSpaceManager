@@ -1,11 +1,9 @@
 package com.corp.conversj.outerspacemanager.Attack;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.corp.conversj.outerspacemanager.Fleet.Ship;
-import com.corp.conversj.outerspacemanager.Fleet.Ships;
+import com.corp.conversj.outerspacemanager.DB.ShipDataSource;
+import com.corp.conversj.outerspacemanager.Model.Ship;
+import com.corp.conversj.outerspacemanager.Model.Ships;
 import com.corp.conversj.outerspacemanager.R;
-import com.corp.conversj.outerspacemanager.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by mac15 on 14/03/2017.
@@ -72,6 +64,12 @@ public class FleetArrayAdapter extends RecyclerView.Adapter<FleetArrayAdapter.Fl
             public void onClick(View v) {
                 Ship sendShip = new Ship(Integer.parseInt(theHolder.tvAmount.getText().toString()),id);
                 fleet.addShip(sendShip);
+                ShipDataSource db = new ShipDataSource(context);
+                db.open();
+                com.corp.conversj.outerspacemanager.DB.Ship dbShip = new com.corp.conversj.outerspacemanager.DB.Ship();
+                dbShip.setName(theHolder.tvName.getText().toString());
+                dbShip.setId(sendShip.getShipId());
+                db.createShip(dbShip);
                 CharSequence text = "Ships Added";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);

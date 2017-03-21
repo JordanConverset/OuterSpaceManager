@@ -1,11 +1,11 @@
-package com.corp.conversj.outerspacemanager.Searches;
+package com.corp.conversj.outerspacemanager.Model;
 
 /**
  * Created by mac15 on 07/03/2017.
  */
 
-public class Search {
-    private int searchId;
+public class Building {
+    private int buildingId;
     private int amountOfEffectByLevel;
     private int amountOfEffectLevel0;
     private String effect;
@@ -17,11 +17,12 @@ public class Search {
     private int mineralCostByLevel;
     private int mineralCostLevel0;
     private String name;
+    private String imageUrl;
     private int timeToBuildByLevel;
     private int timeToBuildLevel0;
 
 
-    public int getAmoutOfEffectByLevel(){
+    public int getAmountOfEffectByLevel(){
         return amountOfEffectByLevel;
     }
 
@@ -74,6 +75,12 @@ public class Search {
     }
 
     public int getBuildingId() {
-        return searchId;
+        return buildingId;
+    }
+
+
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

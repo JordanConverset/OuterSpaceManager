@@ -1,6 +1,7 @@
-package com.corp.conversj.outerspacemanager.Buildings;
+package com.corp.conversj.outerspacemanager.Model;
 
-import java.util.ArrayList;
+import com.corp.conversj.outerspacemanager.Model.Building;
+
 import java.util.List;
 
 /**

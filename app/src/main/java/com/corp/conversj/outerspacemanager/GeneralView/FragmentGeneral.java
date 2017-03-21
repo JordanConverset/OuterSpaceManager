@@ -14,11 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.corp.conversj.outerspacemanager.Attack.onAttackClickedListener;
-import com.corp.conversj.outerspacemanager.DB.Attack;
 import com.corp.conversj.outerspacemanager.DB.AttackDataSource;
 import com.corp.conversj.outerspacemanager.Galaxy.GalaxyArrayAdapter;
-import com.corp.conversj.outerspacemanager.Galaxy.Users;
+import com.corp.conversj.outerspacemanager.Model.Report;
+import com.corp.conversj.outerspacemanager.Model.Reports;
+import com.corp.conversj.outerspacemanager.Model.Users;
 import com.corp.conversj.outerspacemanager.R;
 import com.corp.conversj.outerspacemanager.Service;
 
@@ -55,8 +55,14 @@ public class FragmentGeneral extends Fragment {
         rvGenerals.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         btnToggle.setTextOn("Voir les rapports");
         btnToggle.setTextOff("Voir les attaques en cours");
-        btnToggle.setChecked(false);
+        btnToggle.setChecked(true);
         settings = getActivity().getSharedPreferences(PREFS_NAME, 0);
+
+        if(btnToggle.isChecked()){
+            getAttacks();
+        }else{
+            getReports();
+        }
 
         btnToggle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,15 +78,17 @@ public class FragmentGeneral extends Fragment {
     }
 
     public void getReports() {
-        Call<Users> request = service.getUsers(settings.getString("users", new String()));
-        request.enqueue(new Callback<Users>() {
+        Call<Reports> request = service.getReports(settings.getString("users", new String()),"0","3");
+        request.enqueue(new Callback<Reports>() {
             @Override
-            public void onResponse(Call<Users> call, Response<Users> response) {
-                rvGenerals.setAdapter(new GalaxyArrayAdapter(getActivity().getApplicationContext(), response.body().getUsers()));
+            public void onResponse(Call<Reports> call, Response<Reports> response) {
+                ReportsArrayAdapter adapter = new ReportsArrayAdapter(getActivity().getApplicationContext(), response.body().getReports());
+                adapter.setListener((GeneralActivity)getActivity());
+                rvGenerals.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<Users> call, Throwable t) {
+            public void onFailure(Call<Reports> call, Throwable t) {
                 Context context = getActivity().getApplicationContext();
                 CharSequence text = "Error";
                 int duration = Toast.LENGTH_SHORT;

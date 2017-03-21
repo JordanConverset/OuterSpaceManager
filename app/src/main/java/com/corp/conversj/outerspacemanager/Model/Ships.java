@@ -1,6 +1,7 @@
-package com.corp.conversj.outerspacemanager.Fleet;
+package com.corp.conversj.outerspacemanager.Model;
 
-import java.util.ArrayList;
+import com.corp.conversj.outerspacemanager.Model.Ship;
+
 import java.util.List;
 
 /**
@@ -21,4 +22,5 @@ public class Ships {
     public void addShip(Ship ship){
         this.ships.add(ship);
     }
+
 }

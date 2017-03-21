@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.corp.conversj.outerspacemanager.Fleet.Ships;
+import com.corp.conversj.outerspacemanager.Model.Ships;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

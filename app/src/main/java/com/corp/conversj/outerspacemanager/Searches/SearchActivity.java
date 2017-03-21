@@ -1,17 +1,18 @@
 package com.corp.conversj.outerspacemanager.Searches;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.corp.conversj.outerspacemanager.Model.Searches;
 import com.corp.conversj.outerspacemanager.R;
 import com.corp.conversj.outerspacemanager.Service;
 
@@ -25,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by mac15 on 07/03/2017.
  */
 
-public class SearchActivity extends Activity {
+public class SearchActivity extends AppCompatActivity {
     private RecyclerView rvSearches;
     private TextView tvGas;
     private TextView tvMinerals;
@@ -43,6 +44,8 @@ public class SearchActivity extends Activity {
         tvGas = (TextView) findViewById(R.id.gas);
         tvMinerals = (TextView) findViewById(R.id.minerals);
         Intent intent = getIntent();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         tvGas.setText(String.valueOf((int)intent.getDoubleExtra("gas",0)));
         tvMinerals.setText(String.valueOf((int)intent.getDoubleExtra("minerals",0)));
@@ -68,6 +71,14 @@ public class SearchActivity extends Activity {
                 toast.show();
             }
         });
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

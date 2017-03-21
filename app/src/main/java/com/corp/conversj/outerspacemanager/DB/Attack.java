@@ -1,6 +1,6 @@
 package com.corp.conversj.outerspacemanager.DB;
 
-import com.corp.conversj.outerspacemanager.Fleet.Ships;
+import com.corp.conversj.outerspacemanager.Model.Ships;
 
 import java.util.UUID;
 

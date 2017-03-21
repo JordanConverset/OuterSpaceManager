@@ -1,11 +1,11 @@
-package com.corp.conversj.outerspacemanager.Buildings;
+package com.corp.conversj.outerspacemanager.Model;
 
 /**
  * Created by mac15 on 07/03/2017.
  */
 
-public class Building {
-    private int buildingId;
+public class Search {
+    private int searchId;
     private int amountOfEffectByLevel;
     private int amountOfEffectLevel0;
     private String effect;
@@ -74,6 +74,6 @@ public class Building {
     }
 
     public int getBuildingId() {
-        return buildingId;
+        return searchId;
     }
 }

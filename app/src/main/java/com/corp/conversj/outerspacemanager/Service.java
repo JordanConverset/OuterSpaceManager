@@ -1,13 +1,13 @@
 package com.corp.conversj.outerspacemanager;
 
-import com.corp.conversj.outerspacemanager.Buildings.Buildings;
-import com.corp.conversj.outerspacemanager.Fleet.Ship;
-import com.corp.conversj.outerspacemanager.Fleet.Ships;
-import com.corp.conversj.outerspacemanager.Galaxy.User;
-import com.corp.conversj.outerspacemanager.Galaxy.Users;
-import com.corp.conversj.outerspacemanager.Searches.Searches;
-
-import java.util.List;
+import com.corp.conversj.outerspacemanager.Model.AttackResponse;
+import com.corp.conversj.outerspacemanager.Model.Buildings;
+import com.corp.conversj.outerspacemanager.Model.Reports;
+import com.corp.conversj.outerspacemanager.Model.Ship;
+import com.corp.conversj.outerspacemanager.Model.Ships;
+import com.corp.conversj.outerspacemanager.Model.User;
+import com.corp.conversj.outerspacemanager.Model.Users;
+import com.corp.conversj.outerspacemanager.Model.Searches;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -45,4 +45,6 @@ public interface Service {
     Call<Ships> createShip(@Header("x-access-token") String token, @Path("id") String shipId, @Body Ship ship);
     @POST("api/v1/fleet/attack/{username}")
     Call<AttackResponse> attack(@Header("x-access-token") String token, @Path("username") String username, @Body Ships ships);
+    @GET("api/v1/reports/{from}/{limit}")
+    Call<Reports> getReports(@Header("x-access-token") String token, @Path("from") String from, @Path("limit") String limit);
 }

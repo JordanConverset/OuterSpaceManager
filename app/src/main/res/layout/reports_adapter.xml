@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_weight="2"
+        android:gravity="center"
+        android:id="@+id/rapportDate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:id="@+id/rapport_attack_won_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Gas won"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/rapportGasWon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Minerals won"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/rapportMineralsWon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:id="@+id/rapport_defense_lost_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Gas lost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/rapportGasLost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Minerals lost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/rapportMineralsLost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/rapport_attack_lost_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rapportDefeat"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:id="@+id/rapport_defense_won_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rapportDefended"/>
+    </LinearLayout>
+
+</LinearLayout>

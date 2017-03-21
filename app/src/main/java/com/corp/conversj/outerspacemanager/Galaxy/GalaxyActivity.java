@@ -1,19 +1,16 @@
 package com.corp.conversj.outerspacemanager.Galaxy;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.corp.conversj.outerspacemanager.Buildings.BuildingArrayAdapter;
-import com.corp.conversj.outerspacemanager.Buildings.Buildings;
+import com.corp.conversj.outerspacemanager.Model.Users;
 import com.corp.conversj.outerspacemanager.R;
 import com.corp.conversj.outerspacemanager.Service;
 
@@ -27,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by mac15 on 07/03/2017.
  */
 
-public class GalaxyActivity extends Activity {
+public class GalaxyActivity extends AppCompatActivity {
     private RecyclerView rvUsers;
     private Retrofit retrofit;
     public static final String PREFS_NAME = "OuterSpaceManager";
@@ -40,6 +37,8 @@ public class GalaxyActivity extends Activity {
         settings = getSharedPreferences(PREFS_NAME, 0);
         rvUsers = (RecyclerView) findViewById(R.id.users);
         rvUsers.setLayoutManager(new LinearLayoutManager(this));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://outer-space-manager.herokuapp.com/")
@@ -62,6 +61,14 @@ public class GalaxyActivity extends Activity {
                 toast.show();
             }
         });
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

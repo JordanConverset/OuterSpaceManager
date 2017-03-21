@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.corp.conversj.outerspacemanager.MainActivity;
 import com.corp.conversj.outerspacemanager.R;
 import com.corp.conversj.outerspacemanager.Service;
-import com.corp.conversj.outerspacemanager.Galaxy.User;
+import com.corp.conversj.outerspacemanager.Model.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;

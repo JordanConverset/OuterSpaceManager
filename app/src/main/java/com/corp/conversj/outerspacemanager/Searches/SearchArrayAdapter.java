@@ -7,17 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.corp.conversj.outerspacemanager.Buildings.Buildings;
+import com.corp.conversj.outerspacemanager.Model.Search;
+import com.corp.conversj.outerspacemanager.Model.Searches;
 import com.corp.conversj.outerspacemanager.R;
 import com.corp.conversj.outerspacemanager.Service;
-import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -60,22 +58,22 @@ public class SearchArrayAdapter extends RecyclerView.Adapter<SearchArrayAdapter.
         }
         int level = aSearch.getLevel();
         if(level == 0) {
-            holder.tvGasCost.setText(aSearch.getGasCostLevel0());
+            holder.tvGasCost.setText(String.valueOf(aSearch.getGasCostLevel0()));
         } else {
             holder.tvGasCost.setText(String.valueOf(aSearch.getGasCostLevel0()+aSearch.getGasCostByLevel()*level));
         }
         if(level == 0) {
-            holder.tvMineralCost.setText(aSearch.getMineralCostLevel0());
+            holder.tvMineralCost.setText(String.valueOf(aSearch.getMineralCostLevel0()));
         } else {
             holder.tvMineralCost.setText(String.valueOf(aSearch.getMineralCostLevel0()+aSearch.getMineralCostByLevel()*level));
         }
         if(level == 0) {
-            holder.tvTimeToBuild.setText(aSearch.getTimeToBuildLevel0());
+            holder.tvTimeToBuild.setText(String.valueOf(aSearch.getTimeToBuildLevel0()));
         } else {
             holder.tvTimeToBuild.setText(String.valueOf(aSearch.getTimeToBuildLevel0()+aSearch.getTimeToBuildByLevel()*level));
         }
         if(level == 0) {
-            holder.tvAmountEffect.setText(aSearch.getAmountOfEffectLevel0());
+            holder.tvAmountEffect.setText(String.valueOf(aSearch.getAmountOfEffectLevel0()));
         } else {
             holder.tvAmountEffect.setText(String.valueOf(aSearch.getAmountOfEffectLevel0()+aSearch.getAmoutOfEffectByLevel()*level));
         }
