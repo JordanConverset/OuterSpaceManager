@@ -18,6 +18,7 @@ import com.corp.conversj.outerspacemanager.Connexion.SignInActivity;
 import com.corp.conversj.outerspacemanager.Fleet.ShipActivity;
 import com.corp.conversj.outerspacemanager.Galaxy.GalaxyActivity;
 import com.corp.conversj.outerspacemanager.Galaxy.User;
+import com.corp.conversj.outerspacemanager.GeneralView.GeneralActivity;
 import com.corp.conversj.outerspacemanager.Searches.SearchActivity;
 
 import retrofit2.Call;
@@ -115,6 +116,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 myIntent = new Intent(getApplicationContext(), FleetActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        btnVueGenerale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myIntent = new Intent(getApplicationContext(), GeneralActivity.class);
                 startActivity(myIntent);
             }
         });

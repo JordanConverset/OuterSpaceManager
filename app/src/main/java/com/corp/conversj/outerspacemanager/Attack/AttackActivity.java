@@ -58,7 +58,8 @@ public class AttackActivity extends Activity{
         request.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Call<Users> call, Response<Users> response) {
-                rvUsers.setAdapter(new AttackArrayAdapter(AttackActivity.this, response.body().getUsers(), fleet, settings.getString("users", new String())));
+                AttackArrayAdapter test = new AttackArrayAdapter(AttackActivity.this, response.body().getUsers(), fleet, settings.getString("users", new String()));
+                rvUsers.setAdapter(test);
             }
 
             @Override

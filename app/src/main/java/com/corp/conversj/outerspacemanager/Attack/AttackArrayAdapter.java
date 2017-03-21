@@ -11,6 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.corp.conversj.outerspacemanager.AttackResponse;
+import com.corp.conversj.outerspacemanager.DB.Attack;
+import com.corp.conversj.outerspacemanager.DB.AttackDataSource;
 import com.corp.conversj.outerspacemanager.Fleet.Ship;
 import com.corp.conversj.outerspacemanager.Fleet.Ships;
 import com.corp.conversj.outerspacemanager.Galaxy.GalaxyArrayAdapter;
@@ -71,11 +74,19 @@ public class AttackArrayAdapter extends RecyclerView.Adapter<AttackArrayAdapter.
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
                 Service service = retrofit.create(Service.class);
-                Call<Ships> request = service.attack(token, aUser.getUsername(), ships);
-                request.enqueue(new Callback<Ships>() {
+                Call<AttackResponse> request = service.attack(token, aUser.getUsername(), ships);
+                request.enqueue(new Callback<AttackResponse>() {
                     @Override
-                    public void onResponse(Call<Ships> call, Response<Ships> response) {
+                    public void onResponse(Call<AttackResponse> call, Response<AttackResponse> response) {
                         if(response.code() == 200) {
+                            Attack anAttack = new Attack();
+                            anAttack.setShips(ships);
+                            anAttack.setUsername(aUser.getUsername());
+                            anAttack.setAttackTime(response.body().getAttackTime());
+                            AttackDataSource attackDataSource = new AttackDataSource(context);
+                            attackDataSource.open();
+                            attackDataSource.createAttack(anAttack);
+                            attackDataSource.close();
                             CharSequence text = aUser.getUsername()+" va souffrir, tout est une question de temps !";
                             int duration = Toast.LENGTH_SHORT;
                             Toast toast = Toast.makeText(context, text, duration);
@@ -91,7 +102,7 @@ public class AttackArrayAdapter extends RecyclerView.Adapter<AttackArrayAdapter.
                     }
 
                     @Override
-                    public void onFailure(Call<Ships> call, Throwable t) {
+                    public void onFailure(Call<AttackResponse> call, Throwable t) {
                         CharSequence text = "Error";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);

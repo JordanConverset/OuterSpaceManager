@@ -79,5 +79,6 @@ public class Ship {
     public int getAmount() {
         return amount;
     }
+
 }
 

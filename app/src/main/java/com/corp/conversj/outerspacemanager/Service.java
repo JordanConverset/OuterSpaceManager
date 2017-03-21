@@ -44,5 +44,5 @@ public interface Service {
     @POST("api/v1/ships/create/{id}")
     Call<Ships> createShip(@Header("x-access-token") String token, @Path("id") String shipId, @Body Ship ship);
     @POST("api/v1/fleet/attack/{username}")
-    Call<Ships> attack(@Header("x-access-token") String token, @Path("username") String username, @Body Ships ships);
+    Call<AttackResponse> attack(@Header("x-access-token") String token, @Path("username") String username, @Body Ships ships);
 }

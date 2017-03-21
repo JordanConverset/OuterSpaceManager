@@ -48,6 +48,11 @@ public class GalaxyArrayAdapter extends RecyclerView.Adapter<GalaxyArrayAdapter.
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
     public void onBindViewHolder(GalaxyArrayAdapter.GalaxyViewHolder holder, int position) {
         User aUser = users.get(position);
         holder.tvUsername.setText(aUser.getUsername());
