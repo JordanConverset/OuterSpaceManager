@@ -26,6 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by mac15 on 20/03/2017.
@@ -35,7 +36,6 @@ public class FragmentGeneral extends Fragment {
     private RecyclerView rvGenerals;
     private ToggleButton btnToggle;
     private Retrofit retrofit;
-    private Service service;
     private AttackDataSource db;
     public static final String PREFS_NAME = "OuterSpaceManager";
     private SharedPreferences settings;
@@ -78,6 +78,11 @@ public class FragmentGeneral extends Fragment {
     }
 
     public void getReports() {
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://outer-space-manager.herokuapp.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Service service = retrofit.create(Service.class);
         Call<Reports> request = service.getReports(settings.getString("users", new String()),"0","3");
         request.enqueue(new Callback<Reports>() {
             @Override

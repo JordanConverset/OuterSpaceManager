@@ -9,12 +9,13 @@
         android:id="@+id/building_image"
         android:layout_width="match_parent"
         android:layout_height="275dp"
-        android:layout_margin="5dp" />
+        android:layout_margin="2dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="275dp"
-        android:layout_margin="5dp"
+        android:layout_margin="2dp"
         android:background="@color/Dark"
+        android:id="@+id/filter"
         android:alpha="0.4"/>
 
     <LinearLayout

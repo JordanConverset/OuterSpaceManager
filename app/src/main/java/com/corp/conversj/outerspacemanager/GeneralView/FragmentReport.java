@@ -8,26 +8,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.corp.conversj.outerspacemanager.DB.Attack;
 import com.corp.conversj.outerspacemanager.Model.Report;
 import com.corp.conversj.outerspacemanager.R;
 
 /**
- * Created by mac15 on 20/03/2017.
+ * Created by mac15 on 27/03/2017.
  */
 
-public class FragmentGeneralDetail extends Fragment {
+public class FragmentReport extends Fragment {
     private RecyclerView rvGeneralsDetail;
-    private TextView tvUsername;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_general_detail,container);
-        rvGeneralsDetail = (RecyclerView) v.findViewById(R.id.generalsdetail);
-        tvUsername = (TextView) v.findViewById(R.id.username);
+        View v = inflater.inflate(R.layout.fragment_report_detail,container, false);
+        rvGeneralsDetail = (RecyclerView) v.findViewById(R.id.attacksdetail);
         return v;
     }
 
@@ -35,10 +32,6 @@ public class FragmentGeneralDetail extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         rvGeneralsDetail.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-    }
-
-    public void setAttack(Attack attack) {
-        rvGeneralsDetail.setAdapter(new AttacksDetailArrayAdapter(getActivity().getApplicationContext(), attack.getShips()));
     }
 
     public void setReport(Report report) {

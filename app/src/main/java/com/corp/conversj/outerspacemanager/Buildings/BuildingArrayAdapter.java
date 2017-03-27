@@ -81,7 +81,7 @@ public class BuildingArrayAdapter extends RecyclerView.Adapter<BuildingArrayAdap
             holder.tvAmountEffect.setText(String.valueOf(aBuilding.getAmountOfEffectLevel0()+aBuilding.getAmountOfEffectByLevel()*level));
         }
         if(aBuilding.getBuilding()) {
-            holder.itemView.setBackgroundColor(Color.GRAY);
+            holder.tvFilter.setBackgroundColor(Color.GRAY);
         }
         holder.tvLevel.setText(String.valueOf(level));
 
@@ -146,6 +146,7 @@ public class BuildingArrayAdapter extends RecyclerView.Adapter<BuildingArrayAdap
         private TextView tvMineralCost;
         private TextView tvTimeToBuild;
         private TextView tvLevel;
+        private TextView tvFilter;
         private ImageView imBuilding;
 
         public BuildingViewHolder(View itemView) {
@@ -158,6 +159,7 @@ public class BuildingArrayAdapter extends RecyclerView.Adapter<BuildingArrayAdap
             tvMineralCost = (TextView) itemView.findViewById(R.id.mineralCost);
             tvTimeToBuild = (TextView) itemView.findViewById(R.id.timeToBuild);
             tvLevel = (TextView) itemView.findViewById(R.id.level);
+            tvFilter = (TextView) itemView.findViewById(R.id.filter);
             imBuilding = (ImageView) itemView.findViewById(R.id.building_image);
         }
     }

@@ -10,11 +10,10 @@
         android:id="@+id/fragment_generals"
         android:name="com.corp.conversj.outerspacemanager.GeneralView.FragmentGeneral"/>
 
-    <fragment
-        android:layout_weight="1"
+    <FrameLayout
+        android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_generals_details"
-        android:name="com.corp.conversj.outerspacemanager.GeneralView.FragmentGeneralDetail"/>
+        android:id="@+id/flFragmentContainer" />
 
 </LinearLayout>

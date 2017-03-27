@@ -7,4 +7,5 @@
     <color name="Dark">#000000</color>
     <color name="Orange">#FFA500</color>
     <color name="GreenLight">#44FF44</color>
+    <color name="RedLight">#FF4444</color>
 </resources>

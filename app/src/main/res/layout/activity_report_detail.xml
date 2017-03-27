@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="@style/CustomButton">
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
+    <fragment
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:id="@+id/generalsdetail"
-        android:textColor="@color/White"/>
+        android:id="@+id/fragment_reports_details"
+        android:name="com.corp.conversj.outerspacemanager.GeneralView.FragmentReport"/>
 
 </LinearLayout>

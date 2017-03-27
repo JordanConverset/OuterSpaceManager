@@ -5,12 +5,10 @@
     android:background="@color/Dark">
     <ToggleButton
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
+        android:layout_height="wrap_content"
         android:id="@+id/btn_toggle"/>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/generals">
