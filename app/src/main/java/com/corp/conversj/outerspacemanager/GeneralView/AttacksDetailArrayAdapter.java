@@ -41,7 +41,6 @@ public class AttacksDetailArrayAdapter extends RecyclerView.Adapter<AttacksDetai
         db.open();
         String name = db.getShipNameById(aShip.getShipId());
         db.close();
-        aShip.getShipId();
         holder.tvName.setText(name);
         holder.tvAmount.setText(String.valueOf(aShip.getAmount()));
     }

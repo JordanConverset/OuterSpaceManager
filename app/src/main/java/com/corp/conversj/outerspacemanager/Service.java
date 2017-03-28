@@ -27,8 +27,8 @@ public interface Service {
     Call<User> logUserAccount(@Body User user);
     @GET("api/v1/users/get")
     Call<User> getUser(@Header("x-access-token") String token);
-    @GET("api/v1/users/0/20")
-    Call<Users> getUsers(@Header("x-access-token") String token);
+    @GET("api/v1/users/{from}/{limit}")
+    Call<Users> getUsers(@Header("x-access-token") String token, @Path("from") String from, @Path("limit") String limit);
     @GET("api/v1/buildings/list")
     Call<Buildings> getBuildings(@Header("x-access-token") String token);
     @POST("api/v1/buildings/create/{id}")

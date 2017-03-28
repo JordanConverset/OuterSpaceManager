@@ -7,12 +7,19 @@ package com.corp.conversj.outerspacemanager.Model;
 public class User {
     private String username;
     private String password;
+    private String email;
     private String token;
     private Double gas;
     private Double gasModifier;
     private Double minerals;
     private Double mineralsModifier;
     private Double points;
+
+    public User(String username, String password, String email){
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
     public User(String username, String password){
         this.username = username;

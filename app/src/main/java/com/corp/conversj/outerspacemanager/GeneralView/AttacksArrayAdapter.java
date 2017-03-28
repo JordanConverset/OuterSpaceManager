@@ -16,6 +16,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import android.os.Handler;
 
 /**
@@ -74,7 +77,8 @@ public class AttacksArrayAdapter extends RecyclerView.Adapter<AttacksArrayAdapte
             holder.runnable = new Runnable() {
                 @Override
                 public void run() {
-                    DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+                    DateFormat formatter = new SimpleDateFormat("HH:mm:ss", Locale.FRANCE);
+                    formatter.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
                     Date date = new Date(anAttack.getAttackTime() - System.currentTimeMillis());
                     String dateFormatted = formatter.format(date);
                     holder.progressBar.setProgress(anAttack.getProgress());

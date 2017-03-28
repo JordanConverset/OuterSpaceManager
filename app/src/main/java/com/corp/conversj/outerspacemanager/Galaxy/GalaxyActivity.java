@@ -7,7 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.corp.conversj.outerspacemanager.Model.Users;
@@ -29,6 +31,8 @@ public class GalaxyActivity extends AppCompatActivity {
     private Retrofit retrofit;
     public static final String PREFS_NAME = "OuterSpaceManager";
     private SharedPreferences settings;
+    private int from = 0;
+    private int tmpFrom = from;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,8 +48,8 @@ public class GalaxyActivity extends AppCompatActivity {
                 .baseUrl("https://outer-space-manager.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        Service service = retrofit.create(Service.class);
-        Call<Users> request = service.getUsers(settings.getString("users", new String()));
+        final Service service = retrofit.create(Service.class);
+        Call<Users> request = service.getUsers(settings.getString("users", new String()), String.valueOf(from), "20");
         request.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Call<Users> call, Response<Users> response) {
@@ -61,6 +65,65 @@ public class GalaxyActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+
+        rvUsers.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if(!recyclerView.canScrollVertically(1)) {
+                    int fromTmp = from + 20;
+                    if(fromTmp != tmpFrom) {
+                        tmpFrom = fromTmp;
+                        Call<Users> request = service.getUsers(settings.getString("users", new String()), String.valueOf(from), "20");
+                        request.enqueue(new Callback<Users>() {
+                            @Override
+                            public void onResponse(Call<Users> call, Response<Users> response) {
+                                rvUsers.setAdapter(new GalaxyArrayAdapter(getApplicationContext(), response.body().getUsers()));
+                                from = tmpFrom;
+                            }
+
+                            @Override
+                            public void onFailure(Call<Users> call, Throwable t) {
+                                Context context = getApplicationContext();
+                                CharSequence text = "Error";
+                                int duration = Toast.LENGTH_SHORT;
+                                Toast toast = Toast.makeText(context, text, duration);
+                                toast.show();
+                            }
+                        });
+                    }
+                }
+
+                if(!recyclerView.canScrollVertically(-1)) {
+                    if(from != 0) {
+                        int fromTmp = from - 20;
+                        if (fromTmp != tmpFrom) {
+                            tmpFrom = fromTmp;
+                            Call<Users> request = service.getUsers(settings.getString("users", new String()), String.valueOf(from), "20");
+                            request.enqueue(new Callback<Users>() {
+                                @Override
+                                public void onResponse(Call<Users> call, Response<Users> response) {
+                                    rvUsers.setAdapter(new GalaxyArrayAdapter(getApplicationContext(), response.body().getUsers()));
+                                    from = tmpFrom;
+                                }
+
+                                @Override
+                                public void onFailure(Call<Users> call, Throwable t) {
+                                    Context context = getApplicationContext();
+                                    CharSequence text = "Error";
+                                    int duration = Toast.LENGTH_SHORT;
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.show();
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        });
+
+
     }
 
     @Override

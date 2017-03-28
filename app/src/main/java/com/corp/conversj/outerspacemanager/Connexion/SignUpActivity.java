@@ -27,6 +27,7 @@ public class SignUpActivity extends Activity {
     private Button addBtn;
     private Button loginBtn;
     private EditText username;
+    private EditText email;
     private EditText password;
     private User user;
     private Retrofit retrofit;
@@ -48,6 +49,7 @@ public class SignUpActivity extends Activity {
         setContentView(R.layout.activity_signup);
 
         username = (EditText) findViewById(R.id.input_identifiant);
+        email = (EditText) findViewById(R.id.input_email);
         password = (EditText) findViewById(R.id.input_mdp);
         addBtn = (Button) findViewById(R.id.btn_add);
         loginBtn = (Button) findViewById(R.id.btn_login);
@@ -58,7 +60,7 @@ public class SignUpActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if(!username.getText().toString().equals("")  && !password.getText().toString().equals("")) {
-                    user = new User(username.getText().toString(), password.getText().toString());
+                    user = new User(username.getText().toString(), password.getText().toString(), email.getText().toString());
                 } else {
                     Context context = getApplicationContext();
                     CharSequence text = "The password or the username are missing";
