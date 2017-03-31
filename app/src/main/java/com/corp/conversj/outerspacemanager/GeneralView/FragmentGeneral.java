@@ -39,6 +39,8 @@ public class FragmentGeneral extends Fragment {
     private AttackDataSource db;
     public static final String PREFS_NAME = "OuterSpaceManager";
     private SharedPreferences settings;
+    private int from = 0;
+    private int tmpFrom = from;
 
     @Nullable
     @Override
@@ -82,7 +84,7 @@ public class FragmentGeneral extends Fragment {
                 .baseUrl("https://outer-space-manager.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        Service service = retrofit.create(Service.class);
+        final Service service = retrofit.create(Service.class);
         Call<Reports> request = service.getReports(settings.getString("users", new String()),"0","3");
         request.enqueue(new Callback<Reports>() {
             @Override
@@ -99,6 +101,67 @@ public class FragmentGeneral extends Fragment {
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+            }
+        });
+
+        rvGenerals.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (!recyclerView.canScrollVertically(1)) {
+                    int fromTmp = from + 20;
+                    if (fromTmp != tmpFrom) {
+                        tmpFrom = fromTmp;
+                        Call<Reports> request = service.getReports(settings.getString("users", new String()), String.valueOf(from), "3");
+                        request.enqueue(new Callback<Reports>() {
+                            @Override
+                            public void onResponse(Call<Reports> call, Response<Reports> response) {
+                                ReportsArrayAdapter adapter = new ReportsArrayAdapter(getActivity().getApplicationContext(), response.body().getReports());
+                                adapter.setListener((GeneralActivity) getActivity());
+                                rvGenerals.setAdapter(adapter);
+                                from = tmpFrom;
+                            }
+
+                            @Override
+                            public void onFailure(Call<Reports> call, Throwable t) {
+                                Context context = getActivity().getApplicationContext();
+                                CharSequence text = "Error";
+                                int duration = Toast.LENGTH_SHORT;
+                                Toast toast = Toast.makeText(context, text, duration);
+                                toast.show();
+                            }
+                        });
+                    }
+                }
+
+                if (!recyclerView.canScrollVertically(-1)) {
+                    if (from != 0) {
+                        int fromTmp = from - 20;
+                        if (fromTmp != tmpFrom) {
+                            tmpFrom = fromTmp;
+                            Call<Reports> request = service.getReports(settings.getString("users", new String()), String.valueOf(from), "3");
+                            request.enqueue(new Callback<Reports>() {
+                                @Override
+                                public void onResponse(Call<Reports> call, Response<Reports> response) {
+                                    ReportsArrayAdapter adapter = new ReportsArrayAdapter(getActivity().getApplicationContext(), response.body().getReports());
+                                    adapter.setListener((GeneralActivity) getActivity());
+                                    rvGenerals.setAdapter(adapter);
+                                    from = tmpFrom;
+                                }
+
+                                @Override
+                                public void onFailure(Call<Reports> call, Throwable t) {
+                                    Context context = getActivity().getApplicationContext();
+                                    CharSequence text = "Error";
+                                    int duration = Toast.LENGTH_SHORT;
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.show();
+                                }
+                            });
+                        }
+                    }
+                }
             }
         });
     }

@@ -77,8 +77,7 @@ public class AttacksArrayAdapter extends RecyclerView.Adapter<AttacksArrayAdapte
             holder.runnable = new Runnable() {
                 @Override
                 public void run() {
-                    DateFormat formatter = new SimpleDateFormat("HH:mm:ss", Locale.FRANCE);
-                    formatter.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+                    DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
                     Date date = new Date(anAttack.getAttackTime() - System.currentTimeMillis());
                     String dateFormatted = formatter.format(date);
                     holder.progressBar.setProgress(anAttack.getProgress());
